@@ -4,23 +4,23 @@ angular.module('app', [
 	'ngSanitize'
 ]).config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/', {
-		templateUrl: 'templates/posts.html',
+		templateUrl: 'themes/caminar/templates/posts.html',
 		controller: 'PostsController'
 
 	}).when('/posts/byauthor/:author_id', {
-		templateUrl: 'templates/posts.html',
+		templateUrl: 'themes/caminar/templates/posts.html',
 		controller: 'PostsByAurhorController'
 
 	}).when('/categories/posts/:cat_id', {
-		templateUrl: 'templates/posts.html',
+		templateUrl: 'themes/caminar/templates/posts.html',
 		controller: 'PostsByCategoryController'
 
 	}).when('/:slug', {
-		templateUrl: 'templates/singlepost.html',
+		templateUrl: 'themes/caminar/templates/singlepost.html',
 		controller: 'SinglePostController'
 		
 	}).when('/pages/page/:id', {
-		templateUrl: 'templates/page.html',
+		templateUrl: 'themes/caminar/templates/page.html',
 		controller: 'PageController'
 	}).otherwise({
 		redirectTo: '/'
