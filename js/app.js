@@ -2,7 +2,7 @@ angular.module('app', [
 	'ngRoute',
 	'app.controllers',
 	'ngSanitize'
-]).config(['$routeProvider', function($routeProvider){
+]).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
 	$routeProvider.when('/', {
 		templateUrl: 'themes/caminar/templates/posts.html',
 		controller: 'PostsController'
@@ -24,7 +24,14 @@ angular.module('app', [
 		controller: 'PageController'
 	}).otherwise({
 		redirectTo: '/'
+	})
+
+	// Enable HTML5 mode
+	$locationProvider.html5Mode({
+	  enabled: true,
+	  requireBase: true
 	});
+
 }])
 
 // Date parser filter
