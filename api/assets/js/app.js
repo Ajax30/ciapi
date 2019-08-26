@@ -39,11 +39,6 @@ $(document).ready(function() {
     }
   });
 
-  // Print post
-  $('#print_post').on('click', function(){
-    $('#post_content').printThis();
-  });
-
   //Delete Posts
   $('.delete-post').on('click', function(evt){
     evt.preventDefault();
@@ -53,9 +48,8 @@ $(document).ready(function() {
     var postsCount = Number($("#posts_count").text());
 
     if(confirm('Delete this post?')) {
-      if ($(this).hasClass("ajax-btn")) {
-        $.ajax({
-          url: baseUrl + 'dashboard/posts/delete/' + slug,
+      $.ajax({
+          url: baseUrl + 'api/dashboard/posts/delete/' + slug,
           method: 'GET',
           dataType: 'html',
           success: function(deleteMsg){
@@ -66,9 +60,6 @@ $(document).ready(function() {
             $('#post_delete_msg').slideDown(250).delay(2500).slideUp(250);
           }
         });
-      } else {
-        window.location.href = deleteUrl;
-      }
     }
   });
 
