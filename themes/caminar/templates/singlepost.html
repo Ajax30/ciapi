@@ -3,9 +3,9 @@
 		<h2>{{post.title}}</h2>
 
 		<p class="meta clearfix">
-			<span class="pull-left">By <a href="#!/posts/byauthor/{{post.author_id}}" title="All posts by {{post.first_name}} {{post.last_name}}">{{post.first_name}} {{post.last_name}}</a></span>
+			<span class="pull-left">By <a href="posts/byauthor/{{post.author_id}}" title="All posts by {{post.first_name}} {{post.last_name}}">{{post.first_name}} {{post.last_name}}</a></span>
 
-			<span class="pull-right">Published on {{post.created_at  | dateParse | date : "MMMM dd y"}} in <a href="#!/categories/posts/{{post.cat_id}}" title="All posts in {{post.category_name}}">{{post.category_name}}</a></span>
+			<span class="pull-right">Published on {{post.created_at  | dateParse | date : "MMMM dd y"}} in <a href="categories/posts/{{post.cat_id}}" title="All posts in {{post.category_name}}">{{post.category_name}}</a></span>
 		</p>
 
 		<div class="image fit">

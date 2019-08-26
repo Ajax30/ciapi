@@ -2,7 +2,7 @@
 <section ng-repeat="post in posts" ng-if="$index == 0" id="one" class="wrapper style1">
 
 	<div class="image fit flush">
-		<a href="#!/{{post.slug}}">
+		<a href="{{post.slug}}">
 			<img ng-src="api/assets/img/posts/{{post.post_image}}" alt="{{post.title}}" />
 		</a>
 	</div>
@@ -20,7 +20,7 @@
 
 	<div class="spotlight" ng-repeat="post in posts" ng-if="$index > 0" ng-class="{ '': $even , 'alt': $odd }">
 		<div class="image flush">
-			<a href="#!/{{post.slug}}">
+			<a href="{{post.slug}}">
 				<img ng-src="api/assets/img/posts/{{post.post_image}}" alt="{{post.title}}" />
 			</a>
 		</div>
@@ -28,7 +28,7 @@
 			<h3>{{post.title}}</h3>
 			<p>{{post.description}}</p>
 			<div ng-class="{ 'text-right': $even , 'text-left': $odd }">
-				<a href="#!/{{post.slug}}" class="button special small">Read More</a>
+				<a href="{{post.slug}}" class="button special small">Read More</a>
 			</div>
 		</div>
 	</div>
