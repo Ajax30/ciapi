@@ -136,7 +136,7 @@ class Posts extends CI_Controller {
 		// Update slug (from title)
 		if ($this->form_validation->run()) {
 			$slug = url_title($this->input->post('title'), 'dash', TRUE);
-			$slugcount = $this->Posts_model->slug_count($slug);
+			$slugcount = $this->Posts_model->slug_count($slug, $id);
 			if ($slugcount > 0) {
 				$slug = $slug."-".$slugcount;
 			}

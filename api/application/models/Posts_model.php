@@ -96,7 +96,6 @@ class Posts_model extends CI_Model {
 				$data->last_name = '';
 			}
 
-
 			// category name query
 			$post_category_query = $this->db->get_where('categories', array('id' => $data->cat_id));
 			$category = $post_category_query->row();
@@ -106,12 +105,17 @@ class Posts_model extends CI_Model {
 		}
 	}
 
-	public function slug_count($slug){
-		$this->db->select('count(*) as slugcount');
-		$this->db->from('posts');
-		$this->db->where('slug', $slug);
-		$query = $this->db->get();
-		return $query->row(0)->slugcount;
+	// Count the slugs in the posts table
+	public function slug_count($slug, $id){
+	    $this->db->select('count(*) as slugcount');
+	    $this->db->from('posts');
+	    $this->db->where('slug', $slug);
+	    // if its an update
+	    if ($id != null) {
+	        $this->db->where('id !=', $id);
+	    }
+	    $query = $this->db->get();
+	    return $query->row(0)->slugcount;
 	}
 
   // Create, post
