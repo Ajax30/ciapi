@@ -26,6 +26,7 @@ class Login extends CI_Controller {
     if ($this->form_validation->run()) {
       $email = $this->input->post('email');
       $password = $this->input->post('password');
+    
       $this->load->model('Usermodel');
       $current_user = $this->Usermodel->user_login($email, $password);
         // If we find a user
@@ -45,7 +46,7 @@ class Login extends CI_Controller {
           // After login, display flash message
           $this->session->set_flashdata('user_signin', 'You have signed in');
           //and redirect to the posts page
-          redirect('/dashboard');  
+          redirect('/');  
         } else {
           // If the user found is NOT active
           $this->session->set_flashdata("login_failure_activation", "Your account has not been activated yet.");
@@ -72,6 +73,8 @@ class Login extends CI_Controller {
     $this->session->set_flashdata('user_signout', 'You have signed out');
 
     /* After user has signed out, redirect him/her to posts page */
-    redirect('login'); 
+    redirect('/'); 
   }
 }
+
+
