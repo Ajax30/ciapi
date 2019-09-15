@@ -2,11 +2,11 @@ angular.module('app.controllers', [])
 	.controller('MainController', ['$scope', '$http', function($scope, $http){
 		$http.get('api').then(function(response) {
 
-			// Tagline
-			$scope.tagline = response.data.tagline;
-
 			//Site name
 			$scope.siteTitle = response.data.site_title;
+
+			// Tagline
+			$scope.tagline = response.data.tagline;
 
 			//Company name
 			$scope.companyName = response.data.company_name;
