@@ -34,6 +34,8 @@ class Posts extends CI_Controller {
 		$config = $this->_initPagination("/", $this->Posts_model->get_num_rows());
 
 		$data = $this->Static_model->get_static_data();
+		//$data['pagination'] = $this->pagination->get_as_array();
+		$data['pagination'] = $this->pagination->create_links();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();  
 

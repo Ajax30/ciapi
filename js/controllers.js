@@ -32,13 +32,21 @@ angular.module('app.controllers', [])
 
 	// All posts
 	.controller('PostsController', ['$scope', '$http', function($scope, $http){
-		$http.get('api').then(function(response) {
+		
+		//Get current page (?page=2, ?page=3 etc)
+		const currPage = window.location.search;
+
+		// Get all the posts on the current page 
+		$http.get('api/' + currPage).then(function(response) {
 
 			//Categories
 			$scope.categories = response.data.categories;
 
 			// Posts
 			$scope.posts = response.data.posts;
+
+			// posts pagination
+			$scope.pagination = response.data.pagination;
 
 		});
 	}])
