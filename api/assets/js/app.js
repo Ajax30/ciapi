@@ -49,7 +49,7 @@ $(document).ready(function() {
 
     if(confirm('Delete this post?')) {
       $.ajax({
-          url: baseUrl + 'api/dashboard/posts/delete/' + slug,
+          url: baseUrl + 'dashboard/posts/delete/' + slug,
           method: 'GET',
           dataType: 'html',
           success: function(deleteMsg){
