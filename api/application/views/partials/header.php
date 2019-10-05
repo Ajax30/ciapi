@@ -9,35 +9,8 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>">
   <script src="<?php echo base_url('assets/lib/ckeditor/ckeditor.js')?>"></script>
   <title><?php echo $site_title . " | " . $tagline; ?></title>
-  <?php if (isset($post->title)): ?>
-  <meta property="og:title" content="<?php echo $post->title; ?>">
-  <?php else: ?>
-  <meta property="og:title" content="<?php echo $site_title; ?>">
-  <?php endif; ?>
-  <?php if (isset($post->description)): ?>
-  <meta name="description" property="og:description" content="<?php echo $post->description; ?>">
-  <?php else: ?>
-  <meta name="description" property="og:description" content="<?php echo $tagline; ?>">
-  <?php endif; ?>
-  <?php if (isset($post->post_image)): ?>
-  <meta property="og:url" content="<?php echo base_url('/') . $post->slug; ?>">
-  <?php else: ?>
-  <meta property="og:url" content="<?php echo base_url(); ?>">
-  <?php endif; ?>
-  <?php if (isset($post->post_image)): ?>
-  <meta property="og:image" content="<?php echo base_url('assets/img/posts/' . $post->post_image); ?>">
-  <?php endif; ?>
 </head>
-<body>
-	<div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-  
+<body>  
 	<div class="site-wrapper">
 		<nav class="navbar sticky-top navbar-dark bg-dark flex-wrap2 flex-md-nowrap p-0 py-md-1">
 			<a class="navbar-brand col-auto mr-0 px-2 pl-md-1" href="<?php echo base_url(); ?>">
@@ -58,16 +31,6 @@
 			<div class="navbar-nav navbar-expand-md">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto px-2 pl-md-1 pr-md-2 text-nowrap">
-						<li class="nav-item dropdown my-1">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fa fa-folder-open" aria-hidden="true"></i> Categories
-							</a>
-							<div class="dropdown-menu">
-								<?php foreach ($categories as $category): ?>
-									<a class="dropdown-item" href="<?php echo base_url('/categories/posts/' . $category->id); ?>"><?php echo $category->name; ?></a>
-								<?php endforeach; ?>
-							</div>
-						</li>
 						<?php if($this->session->userdata('is_logged_in')) : ?>
 							<li class="nav-item dropdown my-1">
 								<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
