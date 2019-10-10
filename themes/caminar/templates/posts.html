@@ -17,7 +17,6 @@
 
 <!-- Three -->
 <section id="three" class="wrapper">
-
 	<div class="spotlight" ng-repeat="post in posts" ng-if="$index > 0" ng-class="{ '': $even , 'alt': $odd }">
 		<div class="image flush">
 			<a href="{{post.slug}}">
@@ -32,7 +31,5 @@
 			</div>
 		</div>
 	</div>
-	
 </section>
-
 <div ng-bind-html="pagination"></div>

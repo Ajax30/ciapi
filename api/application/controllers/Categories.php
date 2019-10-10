@@ -12,6 +12,7 @@ class Categories extends CI_Controller {
 		//load and configure pagination 
 		$this->load->library('pagination');
 		$config['base_url'] = base_url('/categories/posts/' . $category_id);
+		$config['base_url'] = str_replace('/api/', '/', $config['base_url']);
 		$config['query_string_segment'] = 'page';
 		$config['total_rows'] =	$this->Posts_model->get_num_rows_by_category($category_id);
 		$config['per_page'] = 12;
@@ -25,6 +26,7 @@ class Categories extends CI_Controller {
 		$this->pagination->initialize($config);
 
 		$data = $this->Static_model->get_static_data();
+		$data['pagination'] = $this->pagination->create_links();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();
 		$data['category_name'] = $this->Categories_model->get_category($category_id)->name;

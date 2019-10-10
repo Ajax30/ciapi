@@ -11,7 +11,7 @@ class Posts extends CI_Controller {
 	private function _initPagination($path, $totalRows, $query_string_segment = 'page') {
     //load and configure pagination 
 		$this->load->library('pagination');
-		$config['base_url'] = base_url($path);
+		$config['base_url'] = "http://".$_SERVER['HTTP_HOST'] . $path;
 		$config['query_string_segment'] = $query_string_segment; 
 		$config['enable_query_strings'] =TRUE;
 		$config['reuse_query_string'] =TRUE;
@@ -34,7 +34,6 @@ class Posts extends CI_Controller {
 		$config = $this->_initPagination("/", $this->Posts_model->get_num_rows());
 
 		$data = $this->Static_model->get_static_data();
-		//$data['pagination'] = $this->pagination->get_as_array();
 		$data['pagination'] = $this->pagination->create_links();
 		$data['pages'] = $this->Pages_model->get_pages();
 		$data['categories'] = $this->Categories_model->get_categories();  

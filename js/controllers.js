@@ -51,9 +51,36 @@ angular.module('app.controllers', [])
 		});
 	}])
 
+
+	// Posts by Category
+	.controller('PostsByCategoryController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+		
+		//Get Category id
+		const cat_id = $routeParams.cat_id;
+
+		//Get current page (?page=2, ?page=3 etc)
+		const currPage = window.location.search;
+
+		$http.get('api/categories/posts/' + cat_id + currPage).then(function(response) {
+
+			//Categories
+			$scope.categories = response.data.categories;
+
+			// Posts
+			$scope.posts = response.data.posts;
+
+			// posts pagination
+			$scope.pagination = response.data.pagination;
+
+			});
+	}])
+
 	// Posts by author
 	.controller('PostsByAurhorController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+		
+		//Get author id
 		const author_id = $routeParams.author_id;
+		
 		$http.get('api/posts/byauthor/' + author_id).then(function(response) {
 
 			//Categories
@@ -63,20 +90,6 @@ angular.module('app.controllers', [])
 			$scope.posts = response.data.posts;
 
 		});
-	}])
-
-	// Posts by Category
-	.controller('PostsByCategoryController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-		const cat_id = $routeParams.cat_id;
-		$http.get('api/categories/posts/' + cat_id).then(function(response) {
-
-			//Categories
-			$scope.categories = response.data.categories;
-
-			// Posts
-			$scope.posts = response.data.posts;
-
-			});
 	}])
 
 	// Single post
