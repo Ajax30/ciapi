@@ -61,9 +61,10 @@ class Posts_model extends CI_Model {
 			->count_all_results('posts');
 	}
 
-	public function get_posts_by_author($authorid) {
+	public function get_posts_by_author($authorid, $limit, $offset) {
 		$this->db->select('posts.*,categories.name as post_category');
     $this->db->order_by('posts.id', 'DESC');
+    $this->db->limit($limit, $offset);
     $this->db->join('categories', 'posts.cat_id = categories.id', 'inner');
 		$query = $this->db->get_where('posts', array('posts.author_id' => $authorid));
 		return $query->result();
@@ -85,7 +86,7 @@ class Posts_model extends CI_Model {
 		$query = $this->db->get_where('posts', array('slug' => $slug));
 		if ($query->num_rows() > 0) {
 			$data = $query->row();
-      // author name query
+      // run separate query for author name
 			$author_query = $this->db->get_where('authors', array('id' => $data->author_id));
 			if ($author_query->num_rows() == 1) {
 				$author = $author_query->row();
@@ -95,27 +96,20 @@ class Posts_model extends CI_Model {
 				$data->first_name = 'Unknown';
 				$data->last_name = '';
 			}
-
-			// category name query
-			$post_category_query = $this->db->get_where('categories', array('id' => $data->cat_id));
-			$category = $post_category_query->row();
-			$data->category_name = $category->name;
-
 			return $data;
 		}
 	}
 
-	// Count the slugs in the posts table
 	public function slug_count($slug, $id){
-	    $this->db->select('count(*) as slugcount');
-	    $this->db->from('posts');
-	    $this->db->where('slug', $slug);
-	    // if its an update
-	    if ($id != null) {
-	        $this->db->where('id !=', $id);
-	    }
-	    $query = $this->db->get();
-	    return $query->row(0)->slugcount;
+    $this->db->select('count(*) as slugcount');
+    $this->db->from('posts');
+    $this->db->where('slug', $slug);
+    // if its an update
+    if ($id != null) {
+        $this->db->where('id !=', $id);
+    }
+    $query = $this->db->get();
+    return $query->row(0)->slugcount;
 	}
 
   // Create, post

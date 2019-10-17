@@ -15,6 +15,10 @@ angular.module('app', [
 		templateUrl: 'themes/caminar/templates/posts.html',
 		controller: 'PostsByCategoryController'
 
+	}).when('/posts/search', {
+		templateUrl: 'themes/caminar/templates/posts.html',
+		controller: 'PostsSearchController'
+
 	}).when('/:slug', {
 		templateUrl: 'themes/caminar/templates/singlepost.html',
 		controller: 'SinglePostController'

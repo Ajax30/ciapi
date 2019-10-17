@@ -51,6 +51,26 @@ angular.module('app.controllers', [])
 		});
 	}])
 
+	// Search posts
+	.controller('PostsSearchController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+
+		//Get search term
+		const searchTerm = window.location.search;
+
+		$http.get('api/posts/search' + searchTerm).then(function(response) {
+
+			//Categories
+			$scope.categories = response.data.categories;
+
+			// Posts
+			$scope.posts = response.data.posts;
+
+			// posts pagination
+			$scope.pagination = response.data.pagination;
+
+			});
+	}])
+
 
 	// Posts by Category
 	.controller('PostsByCategoryController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
@@ -80,14 +100,20 @@ angular.module('app.controllers', [])
 		
 		//Get author id
 		const author_id = $routeParams.author_id;
+
+		//Get current page (?page=2, ?page=3 etc)
+		const currPage = window.location.search;
 		
-		$http.get('api/posts/byauthor/' + author_id).then(function(response) {
+		$http.get('api/posts/byauthor/' + author_id + currPage).then(function(response) {
 
 			//Categories
 			$scope.categories = response.data.categories;
 
 			// Posts
 			$scope.posts = response.data.posts;
+
+			// posts pagination
+			$scope.pagination = response.data.pagination;
 
 		});
 	}])
