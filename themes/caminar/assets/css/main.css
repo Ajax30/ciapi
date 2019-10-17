@@ -3026,12 +3026,12 @@
 	}
 
 	#header > .logo {
-		margin: 0 0 4rem 0;
+		margin: 0 0 3rem 0;
 		padding: 0;
 	}
 
 	#header > .logo a {
-		font-size: 4rem;
+		font-size: 3rem;
 		font-weight: 700;
 		color: #FFF;
 		text-decoration: none;
@@ -3048,7 +3048,7 @@
 	@media screen and (max-width: 1280px) {
 
 		body {
-			padding-top: 6rem;
+			padding-top: 4rem;
 			background-attachment: scroll;
 			background-size: auto;
 			background-position: top;
