@@ -23,7 +23,7 @@ class Posts extends CI_Controller {
 	public function index() {
 
 		if (!$this->session->userdata('is_logged_in')) {
-			redirect('login');
+			redirect('../login');
 		}
 
 		//load and configure pagination 

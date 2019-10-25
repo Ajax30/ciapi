@@ -46,16 +46,16 @@ class Login extends CI_Controller {
           // After login, display flash message
           $this->session->set_flashdata('user_signin', 'You have signed in');
           //and redirect to the posts page
-          redirect('/dashboard');  
+          redirect('../dashboard');  
         } else {
           // If the user found is NOT active
           $this->session->set_flashdata("login_failure_activation", "Your account has not been activated yet.");
-          redirect('login'); 
+          redirect('../login'); 
         }
       } else {
         // If we do NOT find a user
         $this->session->set_flashdata("login_failure_incorrect", "Incorrect email or password.");
-        redirect('login'); 
+        redirect('../login'); 
       }
     }
     else {
@@ -73,7 +73,7 @@ class Login extends CI_Controller {
     $this->session->set_flashdata('user_signout', 'You have signed out');
 
     /* After user has signed out, redirect him/her to posts page */
-    redirect('/dashboard');  
+    redirect('../login'); 
   }
 }
 
