@@ -123,8 +123,11 @@ angular.module('app.controllers', [])
 		const slug = $routeParams.slug;
 		$http.get('api/' + slug).then(function(response) {
 			
-			//Send single post to the view
+			//Single post
 			$scope.post = response.data.post;
+
+			//Comments
+			$scope.comments = response.data.comments;
 
 		});
 	}])

@@ -13,5 +13,14 @@
 		</div>
 
 		<div class="post-content" ng-bind-html="post.content"></div>
+
+		<div ng-if="comments.length > 0" class="comments">
+			<h3>Comments</h3>
+			<div ng-repeat="comment in comments" class="comment">
+				<h4>On {{comment.created_at  | dateParse | date : "MMMM dd y"}}, {{comment.name}} wrote:</h4>
+				<p>{{comment.comment}}</p>
+			</div>
+		</div>
+
 	</div>
 </div>
