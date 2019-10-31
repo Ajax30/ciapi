@@ -2162,7 +2162,7 @@
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		border: border: 4px solid #e7e7e7;
+		border: 2px solid #e7e7e7;
 		background: #fff;
 		color: inherit;
 		display: block;
@@ -3082,7 +3082,8 @@
 		overflow: hidden;
 	}
 
-	.comments {
+	.comments,
+	.comments-form {
 		margin-top: 2.5rem;
 	}
 
