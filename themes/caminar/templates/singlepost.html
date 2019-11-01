@@ -17,16 +17,19 @@
 		<div class="comments-form" ng-controller="PostCommentController">
 			<h3>Leave a comment</h3>
 
-			<form id="comment_form">
+			<form name="commentForm" novalidate>
 				<div class="row uniform">
-					<div class="6u 12u$(xsmall)">
-						<input type="text" name="name" id="name" ng-model="newComment.name" placeholder="Name" required />
+					<div class="form-controll 6u 12u$(xsmall)">
+						<input type="text" name="name" id="name" ng-model="newComment.name" placeholder="Name" ng-required="true" />
+						<span class="error" ng-show="(commentForm.name.$touched && commentForm.name.$invalid) || (commentForm.$submitted && commentForm.name.$invalid)">This field can not be empty</span>
 					</div>
-					<div class="6u$ 12u$(xsmall)">
-						<input type="email" name="email" id="email" ng-model="newComment.email" placeholder="Email" required />
+					<div class="form-controll 6u$ 12u$(xsmall)">
+						<input type="email" name="email" id="email" ng-model="newComment.email" placeholder="Email" ng-required="true" />
+						<span class="error" ng-show="(commentForm.email.$touched && commentForm.email.$invalid) || (commentForm.$submitted && commentForm.email.$invalid)">Enter a valid email address</span>
 					</div>
-					<div class="12u$">
-						<textarea name="message" rows="6" id="message" ng-model="newComment.comment" placeholder="Comemnt" required></textarea>
+					<div class="form-controll 12u$">
+						<textarea name="comment" rows="6" id="message" ng-model="newComment.comment" placeholder="Comment" ng-required="true"></textarea>
+						<span class="error" ng-show="(commentForm.comment.$touched && commentForm.comment.$invalid) || (commentForm.$submitted && commentForm.comment.$invalid)">This field can not be empty</span>
 					</div>
 					<!-- Break -->
 					<div class="12u$">
