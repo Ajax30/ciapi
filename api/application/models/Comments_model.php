@@ -8,16 +8,18 @@ class Comments_model extends CI_Model {
 		return $query->num_rows(); 
 	}
 
-	public function create_comment($post_id) {
-		$data = [
-			'post_id' => $post_id,
-			'name' => $this->input->post('name'),
-			'email' => $this->input->post('email'),
-			'comment' => $this->input->post('message'),
-			'aproved' => 0,
-			'created_at' => date('Y-m-d H:i:s')
-		];
-		return $this->db->insert('comments', $data);
+	public function create_comment($commentData) {
+		
+    $data = [
+       'post_id' => $commentData['post_id'],
+       'name' => $commentData['name'],
+       'email' => $commentData['email'],
+       'comment' => $commentData['comment'],
+       'aproved' => 0,
+       'created_at' => date('Y-m-d H:i:s')
+    ];
+
+    return $this->db->insert('comments', $data);
 	}
 
 	public function get_comments($post_id){

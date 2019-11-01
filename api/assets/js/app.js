@@ -6,39 +6,6 @@ $(document).ready(function() {
     $(this).delay(4000).slideUp(200);
   });
 
-  // Add comments via AJAX
-  $("#commentForm").validate({
-    rules: {
-      email: {
-        email: true
-      }
-    },
-
-    submitHandler: function(form) {
-      var form = $("#commentForm"),
-      $fields = form.find('input[type="text"],input[type="email"],textarea'),
-      url = form.attr('action'),
-      postWhat = form.data('post'),
-      data = form.serialize();
-      $.ajax({
-        type: "POST",
-        url: url,
-        data: data,
-        success: function() {
-          $('#comment_add_msg').text("Your " + postWhat + " will be published after approval")
-          .slideDown(250).delay(2500).slideUp(250);
-          // Empty the form's fields
-          $fields.val('');
-        },
-        error: function() {
-          $('#comment_add_msg').removeClass('alert-success').addClass('alert-danger')
-          .text("Sorry, we could not add your " + postWhat + " comment")
-          .slideDown(250).delay(2500).slideUp(250);
-        }
-      });
-    }
-  });
-
   //Delete Posts
   $('.delete-post').on('click', function(evt){
     evt.preventDefault();

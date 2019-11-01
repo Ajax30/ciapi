@@ -132,6 +132,27 @@ angular.module('app.controllers', [])
 		});
 	}])
 
+	// Post comment
+	.controller('PostCommentController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+		const slug = $routeParams.slug;
+		$http.get('api/' + slug).then(function(response) {
+
+			let post_id = response.data.post.id
+
+			$scope.newComment = {
+				slug: $routeParams.slug,
+				post_id: post_id,
+				name: $scope.name,
+				email: $scope.email,
+				comment: $scope.comment
+			};
+
+			$scope.createComment = function(){
+			  $http.post('api/comments/create/' + post_id, $scope.newComment);
+			};
+		});
+	}])
+
 	// Page
 	.controller('PageController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 		const pageId = $routeParams.id;

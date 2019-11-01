@@ -22,10 +22,15 @@ angular.module('app', [
 	}).when('/:slug', {
 		templateUrl: 'themes/caminar/templates/singlepost.html',
 		controller: 'SinglePostController'
-		
+
+	}).when('/comments/create/', {
+		templateUrl: 'themes/caminar/templates/singlepost.html',
+		controller: 'PostCommentController'
+
 	}).when('/pages/page/:id', {
 		templateUrl: 'themes/caminar/templates/page.html',
 		controller: 'PageController'
+		
 	}).otherwise({
 		redirectTo: '/'
 	})
