@@ -105,10 +105,6 @@
 						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('page_deleted') . '</p>'; ?>
 					<?php endif; ?>
 
-					<?php if($this->session->flashdata('comment_added')): ?>
-						<?php echo '<p class="alert alert-success">'. $this->session->flashdata('comment_added') . '</p>'; ?>
-					<?php endif; ?>
-
 					<?php if($this->session->flashdata('category_created')): ?>
 						<?php echo '<p class="alert alert-success">' . $this->session->flashdata('category_created') . '</p>'; ?>
 					<?php endif; ?>
