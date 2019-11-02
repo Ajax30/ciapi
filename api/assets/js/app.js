@@ -81,11 +81,4 @@ $(document).ready(function() {
     }
   });
 
-  $("#comments_status").click(function(evt) {
-    evt.preventDefault();
-    $('html, body').animate({
-      scrollTop: $("#comments_container").offset().top
-    }, 1000);
-  });
-
 });
