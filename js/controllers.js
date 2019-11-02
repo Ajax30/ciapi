@@ -1,6 +1,6 @@
 angular.module('app.controllers', [])
-	.controller('MainController', ['$scope', '$http', function($scope, $http){
-		$http.get('api').then(function(response) {
+.controller('MainController', ['$scope', '$http', function($scope, $http){
+	$http.get('api').then(function(response) {
 
 			//Site name
 			$scope.siteTitle = response.data.site_title;
@@ -28,7 +28,7 @@ angular.module('app.controllers', [])
 
 		});
 
-	}])
+}])
 
 	// All posts
 	.controller('PostsController', ['$scope', '$http', function($scope, $http){
@@ -68,7 +68,7 @@ angular.module('app.controllers', [])
 			// posts pagination
 			$scope.pagination = response.data.pagination;
 
-			});
+		});
 	}])
 
 
@@ -92,7 +92,7 @@ angular.module('app.controllers', [])
 			// posts pagination
 			$scope.pagination = response.data.pagination;
 
-			});
+		});
 	}])
 
 	// Posts by author
@@ -137,7 +137,9 @@ angular.module('app.controllers', [])
 		const slug = $routeParams.slug;
 		$http.get('api/' + slug).then(function(response) {
 
-			let post_id = response.data.post.id
+			let post_id = response.data.post.id;
+
+			$scope.commentSubmitted = false;
 
 			$scope.newComment = {
 				slug: $routeParams.slug,
@@ -148,7 +150,16 @@ angular.module('app.controllers', [])
 			};
 
 			$scope.createComment = function(){
-			  $http.post('api/comments/create/' + post_id, $scope.newComment);
+				if ($scope.newComment.name !== undefined && $scope.newComment.email !== undefined && $scope.newComment.comment !== undefined){
+					$http.post('api/comments/create/' + post_id, $scope.newComment)
+					.then(() => {
+						$scope.newComment = {};
+						$scope.commentForm.$setPristine();
+						$scope.commentForm.$setUntouched();
+						$scope.commentSuccessMsg = "Your comment was submitted. It will be published after aproval";
+						$scope.commentSubmitted = true;
+					});
+				}
 			};
 		});
 	}])

@@ -23,20 +23,26 @@
 						<input type="text" name="name" id="name" ng-model="newComment.name" placeholder="Name" ng-required="true" />
 						<span class="error" ng-show="(commentForm.name.$touched && commentForm.name.$invalid) || (commentForm.$submitted && commentForm.name.$invalid)">This field can not be empty</span>
 					</div>
+
 					<div class="form-controll 6u$ 12u$(xsmall)">
 						<input type="email" name="email" id="email" ng-model="newComment.email" placeholder="Email" ng-required="true" />
 						<span class="error" ng-show="(commentForm.email.$touched && commentForm.email.$invalid) || (commentForm.$submitted && commentForm.email.$invalid)">Enter a valid email address</span>
 					</div>
+
 					<div class="form-controll 12u$">
 						<textarea name="comment" rows="6" id="message" ng-model="newComment.comment" placeholder="Comment" ng-required="true"></textarea>
 						<span class="error" ng-show="(commentForm.comment.$touched && commentForm.comment.$invalid) || (commentForm.$submitted && commentForm.comment.$invalid)">This field can not be empty</span>
 					</div>
+
 					<!-- Break -->
 					<div class="12u$">
 						<input type="submit" value="Add comment" ng-click="createComment()" class="button special fit" />
 					</div>
 				</div>
 			</form>
+
+			<div class="align-center" ng-show="commentSubmitted == true">{{commentSuccessMsg}}</div>
+
 		</div>
 
 		<div ng-if="comments.length > 0" class="comments">
