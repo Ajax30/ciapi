@@ -2083,7 +2083,7 @@
 		background-color: #4b924b;
 	}
 
-/* Pagination */
+	/* Pagination */
 
 	.pagination {
 		padding: 15px 5px;
@@ -2143,7 +2143,7 @@
 	/* Form */
 
 	form {
-		margin: 0 0 2rem 0;
+		margin: 0 0 1.5rem 0;
 	}
 
 	.form-controll {
@@ -2162,6 +2162,33 @@
 	.ng-submitted .ng-invalid {
 		box-shadow: none;
 		border: 2px solid #c00;
+	}
+
+	.text-success {
+		color: #54a354;
+	}
+
+	.text-danger {
+		color: #c00;
+	}
+
+	.alert {
+		text-align: center;
+		position: relative;
+		padding: .75rem 1.25rem;
+		margin-bottom: 1rem;
+		color: #fff;
+		border-radius: .25rem;
+	}
+
+	.alert-success {
+		background-color: #5eb661;
+		border: 1px solid #4b8358;
+	}
+
+	.alert-danger {
+		background-color: #c00;
+		border: 1px solid #b30000;
 	}
 
 	label {

@@ -16,7 +16,6 @@
 
 		<div class="comments-form" ng-controller="PostCommentController">
 			<h3>Leave a comment</h3>
-
 			<form name="commentForm" novalidate>
 				<div class="row uniform">
 					<div class="form-controll 6u 12u$(xsmall)">
@@ -40,9 +39,7 @@
 					</div>
 				</div>
 			</form>
-
-			<div class="align-center" ng-show="commentSubmitted == true">{{commentSuccessMsg}}</div>
-
+			<div class="alert alert-success" ng-show="commentSubmitted == true">{{commentSuccessMsg}}</div>
 		</div>
 
 		<div ng-if="comments.length > 0" class="comments">
