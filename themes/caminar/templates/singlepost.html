@@ -39,7 +39,9 @@
 					</div>
 				</div>
 			</form>
-			<div class="alert alert-success" ng-show="commentSubmitted == true">{{commentSuccessMsg}}</div>
+			<div class="alert alert-success {{fadeout}}" ng-show="commentSubmitted == true">
+				{{commentSuccessMsg}}
+			</div>
 		</div>
 
 		<div ng-if="comments.length > 0" class="comments">

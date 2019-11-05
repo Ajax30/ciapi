@@ -133,7 +133,7 @@ angular.module('app.controllers', [])
 	}])
 
 	// Post comment
-	.controller('PostCommentController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+	.controller('PostCommentController', ['$scope', '$http', '$routeParams', '$timeout', function($scope, $http, $routeParams, $timeout) {
 		const slug = $routeParams.slug;
 		$http.get('api/' + slug).then(function(response) {
 
@@ -158,6 +158,9 @@ angular.module('app.controllers', [])
 						$scope.commentForm.$setUntouched();
 						$scope.commentSuccessMsg = "Your comment was submitted. It will be published after aproval";
 						$scope.commentSubmitted = true;
+						$timeout(function() {
+		          $scope.fadeout = "fadeout";
+		        }, 3000);
 					});
 				}
 			};
