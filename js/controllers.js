@@ -134,15 +134,18 @@ angular.module('app.controllers', [])
 
 	// Post comment
 	.controller('PostCommentController', ['$scope', '$http', '$routeParams', '$timeout', function($scope, $http, $routeParams, $timeout) {
+		
 		const slug = $routeParams.slug;
+
 		$http.get('api/' + slug).then(function(response) {
 
+			//Current post id
 			let post_id = response.data.post.id;
 
 			$scope.commentSubmitted = false;
 
 			$scope.newComment = {
-				slug: $routeParams.slug,
+				slug: slug,
 				post_id: post_id,
 				name: $scope.name,
 				email: $scope.email,
