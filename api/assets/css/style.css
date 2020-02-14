@@ -86,6 +86,10 @@ body {
   display: none;
 }
 
+.error-messages .alert p {
+  margin: 0;
+}
+
 table a {
   text-decoration: none !important;
   display: inline-block; 
